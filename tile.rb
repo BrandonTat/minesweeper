@@ -1,10 +1,15 @@
 class Tile
+
   attr_reader :bomb, :flagged, :reveal
 
-  def initialize
+  def initialize(board)
+    @board = board
     @bomb = false
     @flagged = false
     @reveal = false
+  end
+
+  def my_pos
   end
 
   def flagged
@@ -15,7 +20,16 @@ class Tile
     @bomb = true
   end
 
+  def to_s
+    if @reveal
+      @bomb ? "B" : "_"
+    else
+      "*"
+    end
+  end
+
   def reveal
+    @reveal = true
   end
 
   def neighbors

@@ -5,8 +5,7 @@ class Board
 
   def self.empty_grid
     grid = Array.new(9) do
-      Array.new(9) { Tile.new }
-      end
+      Array.new(9) { Tile.new(self) }
     end
   end
 
@@ -50,7 +49,7 @@ class Board
   end
 
   def empty?(pos)
-    self[pos].nil?
+    self[pos].bomb == false
   end
 
   def populate
@@ -61,7 +60,7 @@ class Board
     system("clear")
     puts "  #{(0..8).to_a.join(" ")}"
     @grid.each_with_index do |row, i|
-      puts "#{i} #{row.map{|el| el == "B" ? "B" : "_"}.join(" ")}"
+      puts "#{i} #{row.map{|el| el.to_s }.join(" ")}"
     end
   end
 end
