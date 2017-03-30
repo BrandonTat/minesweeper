@@ -2,14 +2,16 @@ class Tile
 
   attr_reader :bomb, :flagged, :reveal
 
-  def initialize(board)
+  def initialize(board, pos)
     @board = board
+    @pos = pos
     @bomb = false
     @flagged = false
     @reveal = false
   end
 
   def my_pos
+
   end
 
   def flagged
@@ -22,7 +24,7 @@ class Tile
 
   def to_s
     if @reveal
-      @bomb ? "B" : "_"
+      @bomb ? "B" : "#{pos}"
     elsif @flagged
       "F"
     else

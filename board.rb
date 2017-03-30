@@ -4,9 +4,14 @@ class Board
   NUM_BOMBS = 10
 
   def self.empty_grid
-    grid = Array.new(9) do
-      Array.new(9) { Tile.new(self) }
+    grid = Array.new(9) {Array.new(9)}
+    grid.each_with_index do |row, i|
+      (0...row.length).each do |j|
+        grid[i][j] = Tile.new(self, [i,j])
+      end
     end
+
+    grid
   end
 
   def initialize(grid = Board.empty_grid)
@@ -31,9 +36,6 @@ class Board
     @grid[0].length
   end
 
-  # def rows
-  #   @grid
-  # end
   def random_pos
     [rand(length), rand(width)]
   end
