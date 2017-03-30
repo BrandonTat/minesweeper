@@ -1,8 +1,13 @@
+require_relative "tile"
+
 class Board
   NUM_BOMBS = 10
 
   def self.empty_grid
-    grid = Array.new(9) { Array.new(9) }
+    grid = Array.new(9) do
+      Array.new(9) { Tile.new }
+      end
+    end
   end
 
   def initialize(grid = Board.empty_grid)
@@ -41,7 +46,7 @@ class Board
       pos = random_pos
     end
 
-    self[pos] = "B"
+    self[pos].create_bomb
   end
 
   def empty?(pos)
