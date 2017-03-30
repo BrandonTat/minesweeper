@@ -36,10 +36,25 @@ class Minesweeper
   def valid_val?(val)
     val == "r" || val == "f"
   end
+
+  def play_turn
+    @board.render
+    pos = get_pos
+    val = get_val
+
+    if val == "f"
+      @board[pos].flagged
+    else
+
+    end
+
+    @board.render
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
   b = Board.new
   game = Minesweeper.new(b)
-  game.run
+  game.play_turn
+
 end

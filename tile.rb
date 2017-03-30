@@ -23,6 +23,8 @@ class Tile
   def to_s
     if @reveal
       @bomb ? "B" : "_"
+    elsif @flagged
+      "F"
     else
       "*"
     end
