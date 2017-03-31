@@ -2,6 +2,7 @@ require_relative "tile"
 
 class Board
   NUM_BOMBS = 10
+  # attr_reader :grid
 
   def self.empty_grid
     grid = Array.new(9) {Array.new(9)}
@@ -14,6 +15,9 @@ class Board
     grid
   end
 
+  # def initialize(grid = [[]])
+  #   @grid = grid
+  # end
   def initialize(grid = Board.empty_grid)
     @grid = grid
   end
@@ -66,7 +70,3 @@ class Board
     end
   end
 end
-
-b = Board.new()
-b.populate
-b.render
